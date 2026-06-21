@@ -1,20 +1,38 @@
-﻿# Intent Compiler Agent
+# Intent Compiler Agent
 
-Intent Compiler Agent is an open-source AI agent that compresses messy human prompts into structured intent and shorter AI-ready instructions.
+A token-saving intent compiler for AI coding agents.
 
-## What It Does
+Intent Compiler Agent is an open-source AI-agent skill that compresses messy human requests into structured intent and minimal AI-ready instructions before tools like Claude Code, Codex, Cursor, Lovable, and ChatGPT act on them.
 
-- Compresses messy prompts
-- Extracts the real intent
-- Finds missing context
-- Creates shorter prompts for Claude Code, Codex, Lovable, ChatGPT, and other AI tools
-- Estimates token savings
+## Why This Exists
 
-## Why It Matters
+AI agents waste tokens when users give long, vague, repetitive, or unclear instructions.
 
-People often waste tokens when using LLMs because prompts are too long, unclear, or repetitive.
+Intent Compiler Agent acts as a pre-processing layer between human intention and AI execution.
 
-Intent Compiler Agent helps reduce that waste by turning messy human language into clear structured instructions.
+It turns messy prompts into:
+
+- compressed intent
+- missing context
+- minimal prompt
+- execution steps
+- token-saving strategy
+
+## Core Idea
+
+Instead of sending a messy request directly to an AI coding agent, send it through Intent Compiler Agent first.
+
+Human request -> Intent Compiler Agent -> structured intent -> AI coding agent
+
+## Use Cases
+
+- Claude Code task preparation
+- Codex task preparation
+- Cursor agent workflows
+- Lovable prompt preparation
+- ChatGPT prompt compression
+- Reducing repeated context in AI workflows
+- Creating cleaner implementation instructions
 
 ## Example
 
@@ -39,18 +57,38 @@ OPENAI_MODEL=gpt-4.1-mini
 
 Never upload your real .env file to GitHub.
 
-## Usage
+## CLI Usage
 
 Development:
 
-npm run dev -- "your messy prompt here --tool=claude_code
+npm run dev -- "your messy prompt here" --tool=claude_code
 
 Production:
 
 npm run build
-npm start -- your messy prompt here --tool=lovable
+npm start -- "your messy prompt here" --tool=lovable
 
-## Supported Tools
+## Skill Usage
+
+Run the reusable skill command:
+
+npm run skill -- "your messy request here" codex
+
+Example:
+
+npm run skill -- "Build a simple patient booking form for a healthcare app" codex
+
+## Agent Integrations
+
+This repository includes early support for AI-agent workflows:
+
+- Claude Code command: .claude/commands/intent-compile.md
+- Codex-style skill: skills/intent-compiler/SKILL.md
+- Agent guidance: AGENTS.md
+- Skill usage docs: docs/agent-skill-usage.md
+- Helper script: skills/intent-compiler/scripts/compile-intent.js
+
+## Supported Targets
 
 - claude_code
 - codex
@@ -58,9 +96,15 @@ npm start -- your messy prompt here --tool=lovable
 - chatgpt
 - generic_llm
 
-## Status
+## Current Status
 
-Phase 1: Local CLI MVP.
+Phase 2 complete: local CLI plus agent-skill integration foundation.
+
+## Long-Term Vision
+
+The long-term vision is to create an AI-native intent layer that helps machines understand human goals with less wasted computation.
+
+This is the first step toward a universal intent compiler for AI agents.
 
 ## License
 
